@@ -1,0 +1,62 @@
+<div class="row">
+
+    <div class="col">
+        <div class="card" style="width: 18rem;">
+           
+            <div class="card-body">
+              <h5 class="card-title">Registration</h5>
+
+              <div *ngFor="let oszlop of regOszlop" class="mb-3">
+                <label [for]="oszlop" class="form-label">{{oszlop}}</label>
+                <input [(ngModel)]="registrationModel[oszlop]" type="text" class="form-control" [id]="oszlop">
+              </div>
+
+              <button (click)="registration()" class="btn btn-primary">Registration</button>
+            </div>
+          </div>
+    </div>
+
+    <div class="col">
+        <div class="card" style="width: 18rem;">
+           
+            <div class="card-body">
+              <h5 class="card-title">Login</h5>
+
+              <div *ngFor="let oszlop of logOszlop" class="mb-3">
+                <label [for]="oszlop" class="form-label">{{oszlop}}</label>
+                <input [(ngModel)]="loginModel[oszlop]" type="text" class="form-control" [id]="oszlop">
+              </div>
+
+              <button (click)="login()" class="btn btn-primary">Login</button>
+            </div>
+          </div>
+    </div>
+
+    <div class="col">
+        <div class="card" style="width: 18rem;">
+           
+            <div class="card-body">
+              <h5 class="card-title">Companies</h5>
+
+              <div class="mb-3">
+                <label for="cegNev" class="form-label">Company name</label>
+                <input [(ngModel)]="companyName" type="text" class="form-control" id="cegNev">
+              </div>
+              <button (click)="addCompany()" class="btn btn-primary">Add Company</button>
+
+              <ng-container *ngIf="companies.length>0">
+                    <p>Companies:</p>
+                    <div *ngFor="let company of companies">
+                        {{company.name}}
+                    </div>
+              </ng-container>
+
+            </div>
+          </div>
+    </div>
+
+</div>
+
+<button (click)="logout()" class="btn btn-primary">Logout</button>
+{{registrationModel|json}}<p></p>
+{{loginModel|json}}
